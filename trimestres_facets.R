@@ -1,8 +1,5 @@
 # Preparacion ========================================================
-
-#Si quieres revisar cómo usar la API de Banco de México puedes ver un tutorial en mi blog personal
-#https://rpubs.com/ecodiegoale/api_banxico
-
+setwd("G:/Mi unidad/r4me")
 rm(list = ls())
 library(siebanxicor)
 library(tidyverse)
@@ -15,7 +12,7 @@ y
 loadfonts(device = "win")
 
 ## Token para usar siebanxicor ======================================
-token <- "TU TOKEN"
+token <- "464d59a88b68326e46c884bf1b1576b3b2a259b9983e5ed511b0d443fecc73b8"
 
 setToken(token)
 
@@ -99,9 +96,29 @@ pib_plot <- ggplot(data = pib, aes(x=trim, y=value))+
        subtitle =  "Miles de millones de pesos",
        caption = "API, Banco de México | @ecodiegoale")
 pib_plot
+
+library(ggh4x)
+pib_plot2 <- ggplot(data = pib)+
+  geom_bar(aes(x=interaction(trim, year), 
+               y=value, group = 1),
+           stat="identity",color ="#474F7A", fill="#474F7A")+
+  scale_y_continuous(label=comma)+
+  scale_x_discrete(NULL, guide = "axis_nested") +
+  theme_da+
+  labs(title = "PIB trimestral a precios constantes, base 2018",
+       subtitle =  "Miles de millones de pesos",
+       caption = "API, Banco de México | @ecodiegoale")
+pib_plot2
   
-ggsave("pib.png", plot = pib_plot, 
+ggsave("pib.png", plot = pib_plot2, 
        width = 20, height = 10, units = "cm")
+
+
+
+
+
+
+
 
 
 
