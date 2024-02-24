@@ -1,5 +1,5 @@
 # Preparacion ========================================================
-setwd("G:/Mi unidad/r4me")
+
 rm(list = ls())
 library(siebanxicor)
 library(tidyverse)
@@ -11,8 +11,12 @@ font_import()
 y
 loadfonts(device = "win")
 
+#Si no tienes experiencia en el uso de la API de Banco de México te recomiendo visitar mi blog personal
+#donde lo explico paso a paso con ejemplos
+#https://www.rpubs.com/ecodiegoale/api_banxico
+
 ## Token para usar siebanxicor ======================================
-token <- "464d59a88b68326e46c884bf1b1576b3b2a259b9983e5ed511b0d443fecc73b8"
+token <- "TU TOKEN"
 
 setToken(token)
 
